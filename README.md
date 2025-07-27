@@ -8,7 +8,7 @@ Data autocompletion for Excel using Ollama (local LLM). Unlimited, free and full
 - Paste the content from `ollamaExcel.txt`, from this repository, and save changes
 
 ## Usage example
-- Enter in formula input: `=OllamaExcel("What is the capital of this country?", A1)`
+- Enter in formula input: `=OllamaExcel("Who is the author of this book?", A1)`
 - First parameter is your question for the LLM
 - Second parameter is optional and appends a cell content to prompt
 
