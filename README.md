@@ -4,7 +4,7 @@ Autocompletion for Excel using Ollama (local LLM)
 # Setup
 - Download Ollama from https://ollama.com/
 - Install Ollama
-- Run in terminal `ollama run gemma3`
+- Run in terminal `ollama run gemma3` (or use a different one if you edit the script)
 - In Excel, open a spreadsheet and press `Alt+F11`
 - Paste the content from `ollamaExcel.txt`, from this repository
 - Click the save button
