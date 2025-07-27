@@ -7,6 +7,9 @@ Data autocompletion for Excel using Ollama (local LLM). Unlimited, free and full
 - In Excel, open a spreadsheet and press `Alt+F11`
 - Paste the content from `ollamaExcel.txt`, from this repository, and save changes
 
+## Plugin
+- If you want to make the script persist when you open a new Excel file, save the script as an Add-In, then enable it.
+
 ## Usage example
 - Enter in formula input: `=OllamaExcel("Who is the author of this book?", A1)`
 - First parameter is your question for the LLM
