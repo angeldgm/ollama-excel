@@ -1,5 +1,5 @@
 # ollama-excel
-Autocompletion for Excel using Ollama (local LLM)
+Data autocompletion for Excel using Ollama (local LLM). Unlimited, free and fully private
 
 ## Setup
 - Download & install Ollama from https://ollama.com/
