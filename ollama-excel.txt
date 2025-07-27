@@ -1,0 +1,45 @@
+Function OllamaExcel(prompt As String, Optional prompt2 As String) As String
+    Dim http As Object
+    Dim json As String
+    Dim responseChunk As Variant
+    Dim result As String
+    Dim lines() As String
+    Dim line As Variant
+    Dim startPos As Long, endPos As Long
+    Dim actualPrompt As String
+    Dim isList As Boolean
+    Dim outputCell As range
+
+    actualPrompt = "Return only the exact (brief) data to complete an Excel cell for this prompt: " & prompt & " " & prompt2
+
+    Set http = CreateObject("MSXML2.XMLHTTP")
+
+    json = "{""model"":""gemma3"",""prompt"":""" & Replace(actualPrompt, """", "\""") & """}"
+
+    With http
+        .Open "POST", "http://localhost:11434/api/generate", False
+        .setRequestHeader "Content-Type", "application/json"
+        .Send json
+        responseChunk = .responseText
+    End With
+
+    result = ""
+    lines = Split(responseChunk, vbLf)
+
+    For Each line In lines
+        If InStr(line, """response"":""") > 0 Then
+            startPos = InStr(line, """response"":""") + Len("""response"":""")
+            endPos = InStr(startPos, line, """")
+            If endPos > startPos Then
+                result = result & Mid(line, startPos, endPos - startPos)
+            End If
+        End If
+    Next line
+
+    If Len(result) = 0 Then
+        OllamaExcel = "Error: No response"
+        Exit Function
+    End If
+    
+    OllamaExcel = Replace(Trim(result), "\n", "")
+End Function
